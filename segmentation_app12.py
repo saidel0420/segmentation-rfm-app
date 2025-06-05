@@ -27,7 +27,7 @@ selected = option_menu(
 
 st.markdown("---")
 st.markdown("📅 Projet PFE - Juin 2025  \n👨‍💻 Réalisé par : SAID EL ALAOUI & HIND BOUMAZA")
-st.markdown("© 2025 - OCP Group")
+
 
 # ------------------- DONNÉES -------------------
 @st.cache_data
