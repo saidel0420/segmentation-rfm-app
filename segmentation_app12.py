@@ -12,7 +12,7 @@ st.set_page_config(page_title="Segmentation Client RFM - OCP", layout="wide")
 # ------------------- NAVBAR HORIZONTALE EN HAUT -------------------
 selected = option_menu(
     menu_title=None,
-    options=["🏠 Accueil", "📂 Données RFM", "⚙️ Segmentation", "📈 Visualisation", "🧠 Interprétation"],
+    options=[" Accueil", " Données RFM", " Segmentation", " Visualisation", " Interprétation"],
     icons=['house', 'table', 'gear', 'bar-chart', 'lightbulb'],
     menu_icon="cast",
     default_index=0,
@@ -26,7 +26,7 @@ selected = option_menu(
 )
 
 st.markdown("---")
-st.markdown("📅 Projet PFE - Juin 2025  \n👨‍💻 Réalisé par : SAID EL ALAOUI & HIND BOUMAZA")
+st.markdown(" Projet PFE - Juin 2025  \n Réalisé par : SAID EL ALAOUI & HIND BOUMAZA")
 
 
 # ------------------- DONNÉES -------------------
@@ -57,11 +57,11 @@ rfm_clean['Segment'] = gmm.fit_predict(rfm_scaled)
 # ------------------- PAGES -------------------
 
 # 1. ACCUEIL
-if selected == "🏠 Accueil":
-    st.title("📊 Segmentation RFM des Clients")
+if selected == " Accueil":
+    st.title(" Segmentation RFM des Clients")
     st.markdown("""
     <div style='background-color: #e3f2fd; padding: 15px; border-radius: 10px'>
-        <h4>🎯 Objectifs :</h4>
+        <h4> Objectifs :</h4>
         <ul>
             <li>Identifier les groupes de clients basés sur leur comportement</li>
             <li>Aider à la prise de décisions marketing</li>
@@ -73,22 +73,22 @@ if selected == "🏠 Accueil":
     # st.image("marketing_clients.jpg", use_column_width=True)
 
 # 2. DONNÉES RFM
-elif selected == "📂 Données RFM":
-    st.title("📂 Données RFM")
+elif selected == " Données RFM":
+    st.title(" Données RFM")
     st.markdown("Voici un aperçu des données après traitement RFM :")
     st.dataframe(rfm_clean.head(50))
     st.success(f"✔️ Nombre total de clients après nettoyage : {len(rfm_clean)}")
 
 # 3. SEGMENTATION
-elif selected == "⚙️ Segmentation":
-    st.title("⚙️ Résultats de la segmentation")
+elif selected == " Segmentation":
+    st.title(" Résultats de la segmentation")
     summary = rfm_clean.groupby('Segment')[['Recence', 'Frequence', 'Montant']].mean().round(1)
     summary['Nombre de clients'] = rfm_clean['Segment'].value_counts()
     st.dataframe(summary.style.highlight_max(axis=0))
 
 # 4. VISUALISATION
-elif selected == "📈 Visualisation":
-    st.title("📈 Visualisation des segments")
+elif selected == " Visualisation":
+    st.title(" Visualisation des segments")
     col1, col2 = st.columns(2)
 
     with col1:
@@ -110,8 +110,8 @@ elif selected == "📈 Visualisation":
         st.plotly_chart(fig2, use_container_width=True)
 
 # 5. INTERPRÉTATION
-elif selected == "🧠 Interprétation":
-    st.title("🧠 Interprétation des Segments")
+elif selected == " Interprétation":
+    st.title(" Interprétation des Segments")
     for segment in sorted(rfm_clean['Segment'].unique()):
         seg_data = rfm_clean[rfm_clean['Segment'] == segment]
         rec = seg_data['Recence'].mean()
